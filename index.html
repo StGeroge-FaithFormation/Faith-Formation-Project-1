@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Formation Activity Dashboard - Perandoor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Login View -->
+    <div id="loginView" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Faith Formation Dashboard</h1>
+                <p class="login-subtitle">Perandoor Parish</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                <div id="loginError" class="login-error hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboardView" class="container hidden">
+        <!-- Header Section -->
+        <header class="dashboard-header">
+            <div class="dashboard-title-section">
+                <h1>Faith Formation Activity Dashboard - Perandoor</h1>
+                <div class="header-info">
+                    <div class="date-time" id="currentDateTime"></div>
+                    <p class="description">Multi-year scoring system tracking student activities across all classes</p>
+                </div>
+            </div>
+            <button class="btn btn--outline logout-btn" id="logoutBtn">Logout</button>
+        </header>
+
+        <!-- Year/Month Selection -->
+        <section class="card mb-24">
+            <div class="card__header">
+                <h2>Score Entry Period Selection</h2>
+                <div class="period-selectors">
+                    <select id="yearSelect" class="form-control selector-dropdown">
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                    <select id="monthSelect" class="form-control selector-dropdown">
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card__body">
+                <div class="breadcrumb" id="breadcrumb">Currently Editing: June 2025</div>
+                <p class="period-note">Note: Each month's scores are stored independently. Totals shown below are aggregated across all months.</p>
+            </div>
+        </section>
+
+        <!-- Current Scores Overview -->
+        <section class="card mb-24">
+            <div class="card__header">
+                <h2>Current Class Standings (Aggregate - All Months)</h2>
+                <button class="btn btn--outline" id="refreshBtn">Refresh</button>
+            </div>
+            <div class="card__body">
+                <div class="scores-grid" id="scoresGrid"></div>
+            </div>
+        </section>
+
+        <!-- Rankings Section -->
+        <section class="card mb-24">
+            <div class="card__header">
+                <h2>Current Rankings (Aggregate - All Months)</h2>
+            </div>
+            <div class="card__body">
+                <div class="rankings-container" id="rankingsContainer"></div>
+            </div>
+        </section>
+
+        <!-- Score Entry Section -->
+        <section class="card mb-24">
+            <div class="card__header">
+                <h2>Score Entry Matrix</h2>
+                <div class="header-actions">
+                    <button class="btn btn--primary" id="saveChangesBtn">Save Changes</button>
+                    <button class="btn btn--secondary" id="resetCurrentBtn">Reset Current Month</button>
+                </div>
+            </div>
+            <div class="card__body">
+                <div class="score-entry-info">
+                    <p><strong>Editing scores for:</strong> <span id="currentPeriodDisplay"></span></p>
+                    <p class="score-entry-note">Changes are automatically saved. Use "Save Changes" to ensure data persistence.</p>
+                </div>
+                <div class="score-entry-container">
+                    <div class="score-grid" id="scoreGrid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="charts-grid">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Aggregate Class Scores (All Months)</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <canvas id="classScoresChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Aggregate Activity Scores (All Months)</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <canvas id="activityScoresChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Management -->
+        <section class="card mb-24">
+            <div class="card__header">
+                <h2>Data Management</h2>
+            </div>
+            <div class="card__body">
+                <div class="data-actions">
+                    <button class="btn btn--outline" id="exportBtn">Export All Data</button>
+                    <button class="btn btn--outline" id="importBtn">Import Data</button>
+                    <button class="btn btn--secondary" id="resetAllBtn">Reset All Data</button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                </div>
+                <div class="data-summary" id="dataSummary">
+                    <p class="summary-text">Total months with data: <span id="monthsWithData">0</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toast Messages -->
+        <div class="toast" id="toast">
+            <span id="toastMessage"></span>
+        </div>
+
+        <!-- Reset Confirmation Modal -->
+        <div class="modal hidden" id="resetModal">
+            <div class="modal-content">
+                <h3>Confirm Reset</h3>
+                <p id="resetModalMessage">Are you sure you want to reset all scores for the current month? This action cannot be undone.</p>
+                <div class="modal-actions">
+                    <button class="btn btn--secondary" id="cancelResetBtn">Cancel</button>
+                    <button class="btn btn--primary" id="confirmResetBtn">Confirm Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
