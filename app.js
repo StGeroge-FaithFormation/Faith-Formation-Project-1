@@ -6,7 +6,7 @@ let dashboardData = {
     activities: ["Present on Time", "Holly Mass Coordination", "Assembly Coordination", "Class Coordination", "Extra Activity Participation", "Overall Discipline"],
     classes: ["1st STD", "2nd STD", "3rd STD", "4th STD", "5th STD", "6th STD", "7th STD", "8th STD", "9th STD", "10th STD", "11th STD", "12th STD"],
     years: {
-        "2025": {
+        "2026": {
             "January": { "activity_scores": {}, "totals": {} },
             "February": { "activity_scores": {}, "totals": {} },
             "March": { "activity_scores": {}, "totals": {} },
@@ -30,7 +30,7 @@ let dashboardData = {
             "November": { "activity_scores": {}, "totals": {} },
             "December": { "activity_scores": {}, "totals": {} }
         },
-        "2026": {
+        "2027": {
             "January": { "activity_scores": {}, "totals": {} },
             "February": { "activity_scores": {}, "totals": {} },
             "March": { "activity_scores": {}, "totals": {} },
@@ -49,8 +49,8 @@ let dashboardData = {
 };
 
 // Current selection
-let currentYear = "2025";
-let currentMonth = "July"; // Default to July 2025 as per requirements
+let currentYear = "2026";
+let currentMonth = "July"; // Default to July 2026 as per requirements
 
 // Chart instances
 let classChart = null;
@@ -123,7 +123,7 @@ function attemptLogin(username, password) {
     console.log('Login attempt with:', username, '[password hidden]');
     
     try {
-        if (username && username.trim() === 'admin' && password && password.trim() === 'faith2025') {
+        if (username && username.trim() === 'admin' && password && password.trim() === 'faith2026') {
             isLoggedIn = true;
             saveAuthToStorage();
             console.log('Login successful');
