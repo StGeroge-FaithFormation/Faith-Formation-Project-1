@@ -4,7 +4,7 @@ let isLoggedIn = false;
 // Application Data Structure
 let dashboardData = {
     activities: ["Present on Time", "Holly Mass Coordination", "Assembly Coordination", "Class Coordination", "Extra Activity Participation", "Overall Discipline"],
-    classes: ["1st STD", "2nd STD", "3rd STD", "4th STD", "5th STD", "6th STD", "7th STD", "8th STD", "9th STD", "10th STD", "11th STD", "12th STD"],
+    classes: ["1st STD", "2nd STD", "3rd STD", "4th STD", "5th STD", "6th STD", "7th STD", "8th STD", "9th STD", "10th STD", "11th STD", "12th STD", "13th STD"],
     years: {
         "2026": {
             "January": { "activity_scores": {}, "totals": {} },
@@ -14,14 +14,14 @@ let dashboardData = {
             "May": { "activity_scores": {}, "totals": {} },
             "June": {
                 "activity_scores": {
-                    "Present on Time": {"1st STD": 5, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0},
-                    "Holly Mass Coordination": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 2, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 10, "11th STD": 0, "12th STD": 0},
-                    "Assembly Coordination": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 3},
-                    "Class Coordination": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0},
-                    "Extra Activity Participation": {"1st STD": 0, "2nd STD": 9, "3rd STD": 0, "4th STD": 5, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 4, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0},
-                    "Overall Discipline": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0}
+                    "Present on Time": {"1st STD": 5, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0, "13th STD": 0},
+                    "Holly Mass Coordination": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 2, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 10, "11th STD": 0, "12th STD": 0, "13th STD": 0},
+                    "Assembly Coordination": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 3, "13th STD": 0},
+                    "Class Coordination": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0, "13th STD": 0},
+                    "Extra Activity Participation": {"1st STD": 0, "2nd STD": 9, "3rd STD": 0, "4th STD": 5, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 4, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0, "13th STD": 0},
+                    "Overall Discipline": {"1st STD": 0, "2nd STD": 0, "3rd STD": 0, "4th STD": 0, "5th STD": 0, "6th STD": 0, "7th STD": 0, "8th STD": 0, "9th STD": 0, "10th STD": 0, "11th STD": 0, "12th STD": 0, "13th STD": 0}
                 },
-                "totals": {"1st STD": 5, "2nd STD": 9, "3rd STD": 0, "4th STD": 5, "5th STD": 2, "6th STD": 0, "7th STD": 0, "8th STD": 4, "9th STD": 0, "10th STD": 10, "11th STD": 0, "12th STD": 3}
+                "totals": {"1st STD": 5, "2nd STD": 9, "3rd STD": 0, "4th STD": 5, "5th STD": 2, "6th STD": 0, "7th STD": 0, "8th STD": 4, "9th STD": 0, "10th STD": 10, "11th STD": 0, "12th STD": 3, "13th STD": 0}
             },
             "July": { "activity_scores": {}, "totals": {} },
             "August": { "activity_scores": {}, "totals": {} },
